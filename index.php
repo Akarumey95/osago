@@ -1,6 +1,16 @@
 <?php
-require_once 'php/getData.php';
-$marks = getAllMarks(500);
+$ch = curl_init();//init Curl
+curl_setopt_array($ch, [
+    CURLOPT_URL => 'https://apistaging.el-market.org/v1/osago/lists/marks/?limit=500',
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => [
+        'Accept: application/json',
+        'Authorization: Test2019'
+    ]
+]);
+$res=json_decode(curl_exec($ch),true);
+curl_close($ch);
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +26,7 @@ $marks = getAllMarks(500);
 	<meta name="description" content="" />
 	<link href="style.css" rel="stylesheet">
     <link href="style-max.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 </head>
 
 <body>
@@ -77,15 +88,17 @@ $marks = getAllMarks(500);
 					<div class="b1">
 						<label>Марка</label>
 						<!--<input type="text" value="">-->
-                        <select name="" id="autoMark">
-                            <?php foreach ($marks as $item):?>
+                        <select name="" id="autoMarks"> <!--class="selectpicker" data-live-search="true"-->
+                            <option></option>
+                            <?php foreach ($res['results'] as $item):?>
                                 <option value="<?=$item['id']?>"><?=$item['name']?></option>
-                            <?php endforeach;?>
+                            <?php endforeach ?>
                         </select>
 					</div>
 					<div class="b2">
 						<label>Модель</label>
-						<input type="text" value="">
+                        <!--<input type="text" value="">-->
+                        <select name="" id="autoModels"></select>
 					</div>
 					<div class="b3">
 						<label>Год выпуска</label>
@@ -117,7 +130,9 @@ $marks = getAllMarks(500);
 				<div class="block3">
 					<div class="b1">
 						<label>Начните ввод, а мы подскажем</label>
-						<input type="text" value="">
+						<!--<input type="text" value="">-->
+                        <input type="text" name="owner_region" id="owner_region" value="" class="who"  autocomplete="off">
+                        <ul class="search_result"></ul>
 					</div>
 				</div>
 				<div align="center" class="title">Водители</div>
@@ -175,6 +190,7 @@ $marks = getAllMarks(500);
 		</div>
 	</main><!-- .content -->
 </div><!-- .wrapper -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js" defer></script>
 </body>
 </html>
