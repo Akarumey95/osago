@@ -117,10 +117,6 @@ curl_close($ch);
                 </div>
                 <div class="block__row">
                     <div class="block__item">
-                        <label>Дата выдачи</label>
-                        <input type="date" placeholder="Дата выдачи" value="">
-                    </div>
-                    <div class="block__item">
                         <label>Документы на машину</label>
                         <input type="text" placeholder="Серия" value="">
                     </div>
@@ -128,13 +124,26 @@ curl_close($ch);
                         <label class="empty__label"></label>
                         <input type="text" placeholder="Номер" value="">
                     </div>
+                    <div class="block__item">
+                        <label>Дата выдачи</label>
+                        <input type="date" placeholder="Дата выдачи" value="">
+                    </div>
+                </div>
+                <div class="block__row">
+                    <div class="block__item">
+                        <label>Диагностическая карта</label>
+                        <input type="text" placeholder="Номер" value="">
+                    </div>
+                    <div class="block__item">
+                        <label class="empty__label"></label>
+                        <input type="date" placeholder="Дата" value="">
+                    </div>
                 </div>
                 <div class="block__row block__row--end">
                     <div class="block__item">
                         <label class="btn__label" for="tab2">Продолжить</label>
                     </div>
                 </div>
-
 			</div>
 			<div class="tab__block block-tab2 tab">
 				<div align="center" class="title">Начало действия нового полиса</div>
@@ -164,6 +173,28 @@ curl_close($ch);
                     </div>
                 </div>
                 <div class="block__row">
+                    <div class="block__item">
+                        <label>Имя</label>
+                        <input type="text" value="">
+                    </div>
+                    <div class="block__item">
+                        <label>Фамилия</label>
+                        <input type="text" value="">
+                    </div>
+                    <div class="block__item">
+                        <div class="nob">
+                            <label for="no">Без отчестава</label>
+                            <input id="no" type="checkbox">
+                        </div>
+                        <label>Отчество</label>
+                        <input type="text" value="">
+                    </div>
+                </div>
+                <div class="block__row">
+                    <div class="block__item">
+                        <label>Дата рождения</label>
+                        <input type="text" value="">
+                    </div>
                     <div class="block__item">
                         <label>Телефон</label>
                         <input type="text" value="">
@@ -213,14 +244,23 @@ curl_close($ch);
                         <input type="text" value="">
                     </div>
                     <div class="block__item">
-                        <label>Водительское удостоверение</label>
-                        <input class="half__input" type="text" value="" placeholder="Серия">
-                        <input class="half__input" type="text" value="" placeholder="Номер">
-                    </div>
-                    <div class="block__item">
                         <label>Дата начала стажа</label>
                         <input type="text" value="">
                         <div class="after">?</div>
+                    </div>
+                </div>
+                <div class="block__row">
+                    <div class="block__item">
+                        <label>Водительское удостоверение</label>
+                        <input type="text" value="" placeholder="Серия">
+                    </div>
+                    <div class="block__item">
+                        <label class="empty__label"></label>
+                        <input type="text" value="" placeholder="Номер">
+                    </div>
+                    <div class="block__item">
+                        <label>Дата выдачи</label>
+                        <input type="date" placeholder="Дата выдачи" value="">
                     </div>
                 </div>
                 <div class="block__row">
@@ -234,10 +274,6 @@ curl_close($ch);
                     </div>
                 </div>
             </div>
-
-
-
-
 			<div class="tab__block block-tab4 tab">
 				<div align="center" class="title">Мы нашли для вас самое выгодное предложение</div>
 				<div class="text"><p>Оплатите ОСАГО напрямую на сайте страховой компании и получите его на email уже через 15 минут.<br>
