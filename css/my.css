@@ -1,0 +1,405 @@
+@font-face {
+    src: url("../fonts/Gilroy-Light.ttf");
+    font-family: Gilroy-Light;
+}
+@font-face {
+    src: url("../fonts/Gilroy-Medium.ttf");
+    font-family: Gilroy-Medium;
+}
+@font-face {
+    src: url("../fonts/Gilroy-Bold.ttf");
+    font-family: Gilroy-Bold;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+body {
+    font: 12px/18px Arial, sans-serif;
+    width: 100%;
+}
+.clear {
+    clear: both;
+}
+.wrapper {
+    width: 1170px;
+    padding:0 15px;
+    margin: 0 auto;
+}
+/* Middle
+-----------------------------------------------------------------------------*/
+.content {
+    padding: 0 0 100px 0;
+}
+
+/* --- Форма заказа звонка --- */
+
+.content .feedback {
+    width: 750px;
+    margin: 0 auto;
+    /*height: 900px;*/
+    background: url("../img/auto1.png") no-repeat 430px 0,
+    url("../img/auto2.png") no-repeat 0 570px;
+    -webkit-box-shadow: 0px 0px 35px 0px rgba(50, 50, 50, 0.55);
+    -moz-box-shadow:    0px 0px 35px 0px rgba(50, 50, 50, 0.55);
+    box-shadow:         0px 0px 35px 0px rgba(50, 50, 50, 0.55);
+    font-family: Gilroy-Light;
+    color: #161515;
+    text-align: center;
+}
+.content .feedback .title{
+    display: block;
+    padding: 90px 0 0 0;
+    font-size: 42px;
+    text-align: center;
+    line-height: 1.1;
+}
+.content .feedback .description {
+    display: block;
+    padding: 40px 0;
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.1;
+}
+.content .feedback label {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-family: Gilroy-Medium;
+}
+.content .feedback input {
+    display: block;
+    height: 35px;
+    width: 453px;
+    border: 1px solid #b1b1b1;
+    text-align: center;
+    font-size: 16px;
+    font-family: Gilroy-Light;
+}
+.content .feedback .block-name {
+    width: 455px;
+    margin: 0 auto;
+    padding: 0 0 45px 0;
+}
+.content .feedback .block-name label{
+    padding: 0 0 25px 0;
+}
+
+.content .feedback .block-tel {
+    width: 455px;
+    margin: 0 auto;
+}
+.content .feedback .block-tel label{
+    padding: 0 0 25px 0;
+}
+.content .feedback .time {
+    width: 455px;
+    margin: 0 auto;
+    padding: 25px 0;
+}
+.content .feedback .time label{
+    display: block;
+    float: left;
+    width: 223px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #b1b1b1;
+    cursor: pointer;
+    font-size: 16px;
+}
+.content .feedback .time .now {
+    margin: 0 5px 0 0;
+}
+.content .feedback .time #now:checked ~ .now {
+    border: 1px solid #6bb84f;
+    background: #6bb84f;
+    color: #fff;
+}
+.content .feedback .time #then:checked ~ .then {
+    border: 1px solid #6bb84f;
+    background: #6bb84f;
+    color: #fff;
+}
+.content .feedback .time #then,
+.content .feedback .time #now {
+    display: none;
+}
+
+.content .feedback .time .open-then {
+    display: block;
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+.content .feedback .time .open-then input{
+    margin: 25px 0 0 0;
+}
+.content .feedback .time #then:checked ~ .open-then {
+    height: 65px;
+}
+.content .feedback .submit {
+    width: 455px;
+    margin: 0 auto;
+    padding: 0 0 25px 0;
+}
+.content .feedback .submit input{
+    height: 43px;
+    background: #ffdf00;
+    border: 1px solid #ffdf00;
+    font-size: 18px;
+    font-family: Gilroy-Medium;
+    cursor: pointer;
+}
+.content .feedback .submit input:hover{
+    border: 1px solid #161515;
+}
+.content .feedback .text {
+    display: block;
+    font-family: Gilroy-Light;
+    font-size: 14px;
+    padding: 0 0 90px 0;
+}
+.content .feedback .text a{
+    color: #072071;
+}
+
+/* --- Настройка табок и блоков --- */
+.tabs {
+    padding: 100px 0 0 0;
+}
+.tabs .tab__block{
+    display: none;
+}
+.tabs .tab__checker {
+    display: none;
+}
+.tabs .tab__checker#tab0:checked ~ .tab0,
+.tabs .tab__checker#tab1:checked ~ .tab1,
+.tabs .tab__checker#tab2:checked ~ .tab2,
+.tabs .tab__checker#tab3:checked ~ .tab3,
+.tabs .tab__checker#tab4:checked ~ .tab4 {
+    background: #33056d;
+    color: #fff;
+}
+.tabs .tab__checker#tab0:checked ~ .block-tab0,
+.tabs .tab__checker#tab1:checked ~ .block-tab1,
+.tabs .tab__checker#tab2:checked ~ .block-tab2,
+.tabs .tab__checker#tab3:checked ~ .block-tab3,
+.tabs .tab__checker#tab4:checked ~ .block-tab4 {
+    display: block;
+}
+.tabs .tab__label{
+    display: inline-block;
+    float: left;
+    height: 50px;
+    width: 25%;
+    line-height: 50px;
+    border: 1px solid #b1b1b1;
+    margin: 0 -1px 65px -1px;
+    text-align: center;
+    font-size: 22px;
+    font-family: Gilroy-Light;
+    cursor: pointer;
+}
+.tabs .title {
+    display: block;
+    padding: 0 0 50px 0;
+    font-family: Gilroy-Bold;
+    font-size: 42px;
+}
+.tabs .tab label {
+    display: block;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-family: Gilroy-Medium;
+}
+.empty__label{
+    height: 18px;
+}
+.tabs .tab input,
+.tabs .tab select {
+    display: inline-block;
+    box-sizing: content-box;
+    height: 48px;
+    width: 340px;
+    padding: 0 0 0 30px;
+    border: 1px solid #b1b1b1;
+    font-size: 18px;
+    font-family: Gilroy-Medium;
+}
+.tabs .tab input.short__input{
+    width: 145px;
+}
+.tabs .tab input.half__input{
+    width: 140px;
+}
+.tabs .block__row {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+.block__row--end{
+    justify-content: flex-end!important;
+}
+.tabs .block__item{
+    position: relative;
+    margin-bottom: 30px;
+}
+.tabs .block__item:not(:first-child){
+    margin-left: 30px;
+}
+.btn__label{
+    display: block;
+    width: 566px;
+    height: 50px;
+    line-height: 50px;
+    background: #ffdf00;
+    text-align: center;
+    font-family: Gilroy-Bold;
+    font-size: 18px;
+    color: #000;
+    cursor: pointer;
+}
+
+.btn__action a{
+    display: block;
+    width: 566px;
+    height: 50px;
+/* margin: 28px 0 0 0; */
+    line-height: 50px;
+    background: #6bb84f;
+    text-align: center;
+    font-family: Gilroy-Bold;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+}
+.btn__action a span{
+    display: inline-block;
+    vertical-align: top;
+    width: 27px;
+    height: 21px;
+    margin: 12px 15px 0 0;
+    background: url("../img/pepol.png") no-repeat;
+}
+
+.block__row .nob{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+.block__row .nob label{
+    margin: 0;
+}
+.block__row .nob input{
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+}
+.after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 2px;
+    background: #e4f1e0;
+    text-align: center;
+    font-size: 18px;
+}
+.after:hover {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #d2d2d2;
+}
+.tabs .tab .text {
+    display: block;
+    padding: 0 0 35px 0;
+    font-size: 18px;
+    font-family: Gilroy-Medium;
+    line-height: 1.4;
+}
+.tabs .tab__block .info {
+    display: block;
+    padding: 5px 20px;
+    margin: 0 0 30px 0;
+    background: #e8e8e8;
+    font-size: 18px;
+    font-family: Gilroy-Bold;
+}
+.tabs .tab__block .pay {
+    display: block;
+    height: 130px;
+    background: #f3f3f3;
+}
+.tabs .tab__block .pay .pay__brand {
+    display: inline-block;
+    vertical-align: middle;
+    width: 131px;
+    height: 57px;
+    margin: 30px 0 0 50px;
+    background: url("../img/osago.png");
+}
+.tabs .tab__block .pay .pay__info {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 30px 0 0 520px;
+    font-size: 28px;
+    font-family: Gilroy-Bold;
+    text-align: center;
+    line-height: 1.2;
+}
+.tabs .tab__block .pay .pay__info span{
+    color: #f24e16;
+}
+.tabs .tab__block .pay .pay__btn {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px 0 0 50px;
+}
+.tabs .tab__block .pay .pay__btn a{
+    display: block;
+    width: 215px;
+    padding: 10px 0;
+    border-radius: 5px;
+    background: #1eb944;
+    font-size: 28px;
+    font-family: Gilroy-Bold;
+    text-align: center;
+    line-height: 1.2;
+    color: #fff;
+    text-decoration: none;
+}
+.search{
+    position:relative;
+}
+.search_result{
+    background: #FFF;
+    border: 1px #ccc solid;
+    width: 100%;
+    border-radius: 4px;
+    max-height:400px;
+    overflow-y:scroll;
+    display:none;
+}
+.search_result li{
+    list-style: none;
+    padding: 5px 10px;
+    margin: 0;
+    color: #0896D3;
+    border-bottom: 1px #ccc solid;
+    cursor: pointer;
+    transition:0.3s;
+}
+.search_result li:hover{
+    background: #F9FF00;
+}

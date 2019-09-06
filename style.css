@@ -217,6 +217,7 @@ body {
 
 }
 
+.tabs .tab0,
 .tabs .tab1,
 .tabs .tab2,
 .tabs .tab3,
@@ -253,9 +254,6 @@ body {
 	border: 1px solid #b1b1b1;
 	font-size: 18px;
 	font-family: Gilroy-Medium;
-}
-.tabs .tab .block1 {
-
 }
 .tabs .tab .block1 .b1,
 .tabs .tab .block1 .b2,
@@ -325,11 +323,7 @@ body {
 	position: relative;
 	padding: 10px 0 0 0;
 }
-.nob3 {
-	position: absolute;
-	top: -5px;
-	right: 0;
-}
+
 .nob3 input{
 	display: inline-block !important;
 	vertical-align: top;
@@ -523,12 +517,9 @@ body {
 	color: #fff;
 	text-decoration: none;
 }
-
-
  .search{
 	 position:relative;
  }
-
 .search_result{
 	background: #FFF;
 	border: 1px #ccc solid;
@@ -538,7 +529,6 @@ body {
 	overflow-y:scroll;
 	display:none;
 }
-
 .search_result li{
 	list-style: none;
 	padding: 5px 10px;
@@ -548,7 +538,6 @@ body {
 	cursor: pointer;
 	transition:0.3s;
 }
-
 .search_result li:hover{
 	background: #F9FF00;
 }

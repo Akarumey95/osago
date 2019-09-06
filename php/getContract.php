@@ -1,4 +1,24 @@
 <?php
+
+//Данные Страхователя (Лицца предоставлющего страховку)
+$insurer = [
+    "personal_info" => [
+        "last_name" => "string",
+        "first_name" => "string",
+        "birth_date" => "2019-09-05",
+    ],
+    "address" => [
+        "full_address" => "Москва ул. Янтарная 22",
+    ],
+    "document" => [
+        "type_code" => "RUSSIAN_PASSPORT",
+        "serial" => "5432",
+        "number" => "345632",
+        "issue_date" => "1994-09-05",
+        "issued_by" => "string",
+    ],
+];
+
 /*$data = [
     "insurer" => [
         "personal_info" => [
@@ -133,27 +153,7 @@
     ],
 ];//build query*/
 $data = [
-    "insurer" => [
-        "personal_info" => [
-            "last_name" => "string",
-            "first_name" => "string",
-            "birth_date" => "2019-09-05",
-        ],
-        "address" => [
-            "full_address" => "Москва ул. Янтарная 22",
-        ],
-        "document" => [
-            "type_code" => "RUSSIAN_PASSPORT",
-            "serial" => "5432",
-            "number" => "345632",
-            "issue_date" => "1994-09-05",
-            "issued_by" => "string",
-        ],
-        "contacts" => [
-            "phone" => "+7990066777",
-            "email" => "string@asdfs.com",
-        ],
-    ],
+    "insurer" => $insurer,
     "owner" => [
         "personal_info" => [
             "last_name" => "string",
