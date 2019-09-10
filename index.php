@@ -33,7 +33,7 @@ curl_close($ch);
 <div class="wrapper">
 	<main class="content">
 		<div class="feedback">
-			<form action="">
+			<form action method="post" enctype="multipart/form-data">
 				<span class="title">
 					Укажите контактные данные<br>
 					и удобное время для звонка
@@ -72,7 +72,7 @@ curl_close($ch);
 		</div>
 
 		<div class="tabs">
-			<form>
+			<form action method="post" enctype="multipart/form-data" id="calculate__form">
 			<input class="tab__checker" id="tab1" name="tab" type="radio" checked>
                 <label class="tab__label tab1" for="tab1">Автомобиль</label>
 			<input class="tab__checker" id="tab2" name="tab" type="radio">
@@ -88,7 +88,7 @@ curl_close($ch);
                     <div class="block__item">
                         <label>Марка</label>
                         <!--<input type="text" value="">-->
-                        <select name="" id="autoMarks"> <!--class="selectpicker" data-live-search="true"-->
+                        <select name="vehicle_mark_name" id="autoMarks"> <!--class="selectpicker" data-live-search="true"-->
                             <option></option>
                             <?php foreach ($res['results'] as $item):?>
                                 <option value="<?=$item['id']?>"><?=$item['name']?></option>
@@ -97,46 +97,45 @@ curl_close($ch);
                     </div>
                     <div class="block__item">
                         <label>Модель</label>
-                        <!--<input type="text" value="">-->
-                        <select name="" id="autoModels"></select>
+                        <select name="vehicle_model_name" id="autoModels"></select>
                     </div>
                 </div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Мощность</label>
-                        <input type="text" value="">
+                        <input type="text" name="vehicle_power" value="">
                     </div>
                     <div class="block__item">
                         <label>Год выпуска</label>
-                        <input type="text" value="">
+                        <input type="text" name="vehicle_manufacture_year" value="">
                     </div>
                     <div class="block__item">
                         <label>Номер VIN</label>
-                        <input type="text" value="">
+                        <input type="text" name="vehicle_id_number" value="">
                     </div>
                 </div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Документы на машину</label>
-                        <input type="text" placeholder="Серия" value="">
+                        <input type="text" name="vehicle_serial" placeholder="Серия" value="">
                     </div>
                     <div class="block__item">
                         <label class="empty__label"></label>
-                        <input type="text" placeholder="Номер" value="">
+                        <input type="text" name="vehicle_number" placeholder="Номер" value="">
                     </div>
                     <div class="block__item">
                         <label>Дата выдачи</label>
-                        <input type="date" placeholder="Дата выдачи" value="">
+                        <input type="date" name="vehicle_issue_date" placeholder="Дата выдачи" value="">
                     </div>
                 </div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Диагностическая карта</label>
-                        <input type="text" placeholder="Номер" value="">
+                        <input type="text" name="diagnostic_card_number" placeholder="Номер" value="">
                     </div>
                     <div class="block__item">
                         <label class="empty__label"></label>
-                        <input type="date" placeholder="Дата" value="">
+                        <input type="date" name="diagnostic_card_expiration_date" placeholder="Дата" value="">
                     </div>
                 </div>
                 <div class="block__row block__row--end">
@@ -150,11 +149,11 @@ curl_close($ch);
                 <div class="block__row">
                     <div class="block__item">
                         <label>Выберите дату</label>
-                        <input type="date" value="">
+                        <input type="date" name="action_start_date" value="">
                     </div>
                     <div class="block__item">
                         <label>Выберите период</label>
-                        <input class="short__input" type="text" value="">
+                        <input class="short__input" type="text" name="insurance_period" value="">
                     </div>
                     <div class="block__item">
                         <label class="empty__label"></label>
@@ -167,19 +166,18 @@ curl_close($ch);
                 <div class="block__row">
                     <div class="block__item">
                         <label>Начните ввод, а мы подскажем</label>
-                        <!--<input type="text" value="">-->
-                        <input type="text" name="owner_region" id="owner_region" value="" class="who"  autocomplete="off">
+                        <input type="text" name="owner_full_address" id="owner_region" value="" class="who"  autocomplete="off">
                         <ul class="search_result"></ul>
                     </div>
                 </div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Имя</label>
-                        <input type="text" value="">
+                        <input type="text" name="owner_first_name" value="">
                     </div>
                     <div class="block__item">
                         <label>Фамилия</label>
-                        <input type="text" value="">
+                        <input type="text" name="owner_last_name" value="">
                     </div>
                     <div class="block__item">
                         <div class="nob">
@@ -187,47 +185,47 @@ curl_close($ch);
                             <input id="no" type="checkbox">
                         </div>
                         <label>Отчество</label>
-                        <input type="text" value="">
+                        <input type="text" name="owner_middle_name" value="">
                     </div>
                 </div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Дата рождения</label>
-                        <input type="text" value="">
+                        <input type="text" name="owner_birth_date" value="">
                     </div>
                     <div class="block__item">
                         <label>Телефон</label>
-                        <input type="text" value="">
+                        <input type="text" name="owner_phone" value="">
                     </div>
                     <div class="block__item">
                         <label>Email</label>
-                        <input type="text" value="">
+                        <input type="text" name="owner_email" value="">
                     </div>
                 </div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Паспортные данные</label>
-                        <input class="half__input" type="text" value="" placeholder="Серия">
-                        <input class="half__input" type="text" value="" placeholder="Номер">
+                        <input class="half__input" type="text" name="owner_serial" value="" placeholder="Серия">
+                        <input class="half__input" type="text" name="owner_number" value="" placeholder="Номер">
                     </div>
                     <div class="block__item">
                         <label class="empty__label"></label>
-                        <input type="text" value="" placeholder="Дата выдачи">
+                        <input type="text" value="" name="owner_issue_date" placeholder="Дата выдачи">
                     </div>
                     <div class="block__item">
                         <label class="empty__label"></label>
-                        <input type="text" value="" placeholder="Кем выдан">
+                        <input type="text" name="owner_issued_by" value="" placeholder="Кем выдан">
                     </div>
                 </div>
 				<div align="center" class="title">Водители</div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Имя</label>
-                        <input type="text" value="">
+                        <input type="text" name="drivers_first_name" value="">
                     </div>
                     <div class="block__item">
                         <label>Фамилия</label>
-                        <input type="text" value="">
+                        <input type="text" name="drivers_last_name" value="">
                     </div>
                     <div class="block__item">
                         <div class="nob">
@@ -235,32 +233,32 @@ curl_close($ch);
                             <input id="no" type="checkbox">
                         </div>
                         <label>Отчество</label>
-                        <input type="text" value="">
+                        <input type="text" name="drivers_middle_name" value="">
                     </div>
                 </div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Дата рождения</label>
-                        <input type="text" value="">
+                        <input type="text" name="drivers_birth_date" value="">
                     </div>
                     <div class="block__item">
                         <label>Дата начала стажа</label>
-                        <input type="text" value="">
+                        <input type="text" name="drivers_experience_start_date" value="">
                         <div class="after">?</div>
                     </div>
                 </div>
                 <div class="block__row">
                     <div class="block__item">
                         <label>Водительское удостоверение</label>
-                        <input type="text" value="" placeholder="Серия">
+                        <input type="text" name="drivers_serial" value="" placeholder="Серия">
                     </div>
                     <div class="block__item">
                         <label class="empty__label"></label>
-                        <input type="text" value="" placeholder="Номер">
+                        <input type="text" name="drivers_number" value="" placeholder="Номер">
                     </div>
                     <div class="block__item">
                         <label>Дата выдачи</label>
-                        <input type="date" placeholder="Дата выдачи" value="">
+                        <input type="date" name="drivers_issue_date" placeholder="Дата выдачи" value="">
                     </div>
                 </div>
                 <div class="block__row">
@@ -270,7 +268,7 @@ curl_close($ch);
                     </div>
                     <div class="block__item">
                         <label class="empty__label"></label>
-                        <label class="btn__label" for="tab4">Продолжить</label>
+                        <input type="submit" class="btn__label" value="Продолжить">
                     </div>
                 </div>
             </div>

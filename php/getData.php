@@ -11,7 +11,7 @@ function getAllModelByID($id){
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => [
             'Accept: application/json',
-            'Authorization: Test2019',
+            'Authorization: Token Test2019',
         ],
     ]);
     $res=json_decode(curl_exec($ch),true);
@@ -32,7 +32,7 @@ function getAllMarks($limit){
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => [
             'Accept: application/json',
-            'Authorization: Test2019'
+            'Authorization: Token Test2019'
         ]
     ]);
     $res=json_decode(curl_exec($ch),true);
@@ -41,8 +41,31 @@ function getAllMarks($limit){
     return $res['results'];
 }
 
+//Get all companies
+function getAllCompanies(){
+    $data = http_build_query([
+    ]);//build query
+    $ch = curl_init();//init Curl
+    curl_setopt_array($ch, [
+        CURLOPT_URL => 'https://apistaging.el-market.org/v1/osago/lists/companies/?' . $data,
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => [
+            'Accept: application/json',
+            'Authorization: Token Test2019'
+        ]
+    ]);
+    $res=json_decode(curl_exec($ch),true);
+    curl_close($ch);
+    if (curl_errno($ch)) { echo 'Error:' . curl_error($ch);}
+    return $res['results'];
+}
+
+
 if($_POST['action'] == getMarks){
 echo json_encode(getAllMarks(500));
 }elseif($_POST['action'] == getModels){
 echo json_encode(getAllModelByID($_POST['id']));
+}elseif($_POST['action'] == getCompanies){
+    echo json_encode(getAllCompanies());
 }

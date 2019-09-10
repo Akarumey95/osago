@@ -1,5 +1,4 @@
 <?php
-
 //Данные Страхователя (Лицца предоставлющего страховку)
 $insurer = [
     "personal_info" => [
@@ -17,77 +16,85 @@ $insurer = [
         "issue_date" => "1994-09-05",
         "issued_by" => "string",
     ],
+    "contacts" => [
+        "phone" => "+7990066777",
+        "email" => "string@asdfs.com",
+    ],
 ];
+$agent = [
+    "phone" => "+7990066777",
+    "email" => "string@asdfs.com",
+];
+
 $data = [
     "insurer" => $insurer,
     "owner" => [
-        "personal_info" => [
-            "last_name" => "Адамов",
-            "first_name" => "Дмитрий",
-            "birth_date" => "1994-09-05",
+        "personal_info"  => [
+            "last_name"  => /*$_POST['owner_last_name']*/ "Адамов",
+            "first_name" => /*$_POST['owner_first_name']*/ "Дмитрий",
+            "middle_name"=> /*$_POST['owner_middle_name']*/ "Петров",
+            "birth_date" => /*$_POST['owner_birth_date']*/ "1994-09-05",
         ],
         "address" => [
-            "full_address" => "Москва ул. Янтарная 22",
+            "full_address" => /*$_POST['owner_full_address']*/ "Омск ул. Янтарная 22",
         ],
         "document" => [
             "type_code" => "RUSSIAN_PASSPORT",
-            "serial" => "5432",
-            "number" => "345632",
-            "issue_date" => "1994-09-05",
-            "issued_by" => "string",
+            "serial" =>  /*$_POST['owner_serial']*/ "5432",
+            "number" =>  /*$_POST['owner_number']*/ "345632",
+            "issue_date" =>  /*$_POST['owner_issue_date']*/ "1994-09-05",
+            "issued_by" =>  /*$_POST['owner_issued_by']*/ "string",
         ],
         "contacts" => [
-            "phone" => "+7990066777",
-            "email" => "string@asdfs.com",
+            "phone" =>  /*$_POST['owner_phone']*/ "+7990066777",
+            "email" =>  /*$_POST['owner_email']*/ "string@asdfs.com",
         ],
     ],
     "vehicle" => [
         "document" => [
             "type_code" => "PTS",
-            "serial" => "ВА23",
-            "number" => "123456",
-            "issue_date" => "1997-09-05",
+            "serial" => /*$_POST['vehicle_serial']*/ "58ТС",
+            "number" => /*$_POST['vehicle_number']*/ "123456",
+            "issue_date" =>  /*$_POST['vehicle_issue_date']*/ "2011-09-05",
         ],
         "vehicle_id" => [
             "type_code" => "VIN",
-            "number" => "12345678910",
+            "number" =>  /*$_POST['vehicle_id_number']*/ "12345678910",
         ],
         "engine" => [
-            "power" => "300",
+            "power" =>  /*$_POST['vehicle_power']*/ "300",
         ],
-        "mark_name" => "AVIA",
-        "model_name" => "A21",
-        "manufacture_year" => 2010,
+        "mark_name" =>  /*$_POST['vehicle_mark_name']*/ "AUDI",
+        "model_name" => /*$_POST['vehicle_model_name']*/  "A3",
+        "manufacture_year" =>  /*$_POST['vehicle_manufacture_year']*/ 2010,
 
         "purpose" => "PERSONAL",
-        "category" => "A",
+        "category" => "B",
         "diagnostic_card" => [
-            "number" => "123456789012",
-            "expiration_date" => "2020-09-05",
+            "number" => /*$_POST['diagnostic_card_number']*/ "123456789012",
+            "expiration_date" => /*$_POST['diagnostic_card_expiration_date']*/ "2020-09-05",
         ],
     ],
     "drivers" => [
        [
-           "last_name" => "Пупкин",
-           "first_name" => "Вася",
-           "birth_date" => "1985-09-05",
-           "experience_start_date" => "2016-09-05",
+           "last_name"  => /*$_POST['drivers_last_name']*/"Пупкин",
+           "first_name" => /*$_POST['drivers_first_name']*/ "Вася",
+           "middle_name"=> /*$_POST['drivers_middle_name']*/ "Петров",
+           "birth_date" => /*$_POST['drivers_birth_date']*/ "1985-09-05",
+           "experience_start_date" => /*$_POST['drivers_experience_start_date']*/ "2016-09-05",
            "license" => [
                "type_code" => "RUSSIAN_DRIVER_LICENSE",
-               "serial" => "5846",
-               "number" => "123452",
-               "issue_date" => "2018-08-05",
+               "serial" =>  /*$_POST['drivers_serial']*/"5846",
+               "number" =>  /*$_POST['drivers_number']*/ "123452",
+               "issue_date" => /*$_POST['drivers_issue_date']*/ "2018-08-05",
            ],
        ],
     ],
     "policy_action" => [
-        "action_start_date" => "2019-09-20",
-        "insurance_period" => 10,
+        "action_start_date" => /*$_POST['action_start_date']*/ "2019-09-20",
+        "insurance_period" =>  /*$_POST['insurance_period']*/  12,
     ],
-    "agent_contacts" => [
-        "phone" => "+7990066777",
-        "email" => "string@asdfs.com",
-    ],
+    "agent_contacts" => $agent,
 ];//build query
 $ch = curl_init();//init Curl
 curl_setopt_array($ch, [
@@ -106,7 +113,5 @@ $res=curl_exec($ch);
 
 curl_close($ch);
 if (curl_errno($ch)) { echo 'Error:' . curl_error($ch);}
-echo "<pre>";
-var_dump($res);
-echo "</pre>";
+echo $res;
 ?>
