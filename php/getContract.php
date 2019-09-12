@@ -11,18 +11,18 @@ $insurer = [
     ],
     "document" => [
         "type_code" => "RUSSIAN_PASSPORT",
-        "serial" => "5432",
+        "serial" => "3212",
         "number" => "345632",
         "issue_date" => "1994-09-05",
         "issued_by" => "string",
     ],
     "contacts" => [
-        "phone" => "+7990066777",
+        "phone" => "+79900667777",
         "email" => "string@asdfs.com",
     ],
 ];
 $agent = [
-    "phone" => "+7990066777",
+    "phone" => "+79900667777",
     "email" => "string@asdfs.com",
 ];
 
@@ -32,16 +32,16 @@ $data = [
         "personal_info"  => [
             "last_name"  => /*$_POST['owner_last_name']*/ "Адамов",
             "first_name" => /*$_POST['owner_first_name']*/ "Дмитрий",
-            "middle_name"=> /*$_POST['owner_middle_name']*/ "Петров",
-            "birth_date" => /*$_POST['owner_birth_date']*/ "1994-09-05",
+            "middle_name"=> /*$_POST['owner_middle_name']*/ "Петрович",
+            "birth_date" => /*$_POST['owner_birth_date']*/ "1974-09-05",
         ],
         "address" => [
             "full_address" => /*$_POST['owner_full_address']*/ "Омск ул. Янтарная 22",
         ],
         "document" => [
             "type_code" => "RUSSIAN_PASSPORT",
-            "serial" =>  /*$_POST['owner_serial']*/ "5432",
-            "number" =>  /*$_POST['owner_number']*/ "345632",
+            "serial" =>  /*$_POST['owner_serial']*/ "4332",
+            "number" =>  /*$_POST['owner_number']*/ "348841",
             "issue_date" =>  /*$_POST['owner_issue_date']*/ "1994-09-05",
             "issued_by" =>  /*$_POST['owner_issued_by']*/ "string",
         ],
@@ -79,7 +79,7 @@ $data = [
        [
            "last_name"  => /*$_POST['drivers_last_name']*/"Пупкин",
            "first_name" => /*$_POST['drivers_first_name']*/ "Вася",
-           "middle_name"=> /*$_POST['drivers_middle_name']*/ "Петров",
+           "middle_name"=> /*$_POST['drivers_middle_name']*/ "Петрович",
            "birth_date" => /*$_POST['drivers_birth_date']*/ "1985-09-05",
            "experience_start_date" => /*$_POST['drivers_experience_start_date']*/ "2016-09-05",
            "license" => [
@@ -96,6 +96,9 @@ $data = [
     ],
     "agent_contacts" => $agent,
 ];//build query
+
+//echo json_encode($data);
+
 $ch = curl_init();//init Curl
 curl_setopt_array($ch, [
     CURLOPT_URL => 'https://apistaging.el-market.org/v1/osago/contracts/',
@@ -109,9 +112,10 @@ $headers[] = 'Accept: application/json';
 $headers[] = 'Content-Type: application/json';
 $headers[] = 'Authorization: Token Test2019';
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-$res=curl_exec($ch);
 
+$res=curl_exec($ch);
 curl_close($ch);
+
 if (curl_errno($ch)) { echo 'Error:' . curl_error($ch);}
 echo $res;
 ?>

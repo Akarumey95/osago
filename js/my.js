@@ -83,8 +83,7 @@ $(document).ready(function () {
     });
 
     //Просчет полисов
-    $('#calculate__form').submit(function (e) {
-        e.preventDefault();
+    $('.submit__trigger').on('click', function () {
         var form = $('#calculate__form')[0];
         var Fdata = new FormData(form);
         $.ajax({
@@ -95,16 +94,31 @@ $(document).ready(function () {
             contentType: false,
             dataType: "json",
             success: function (data) {
-                getCalculate(data.contract_id)
+                $(".pay").removeClass('disable');
+                $.each(companies, function (index, item) {
+                    getCalculations(item.code, data.contract_id)
+                });
             }
         });
     });
 
-    function getCalculate(id) {
-        $.each(companies, function (index, item) {
-            $.ajax({
+    function getCalculations(company, id) {
+        $.ajax({
+            type: "POST",
+            url: "php/getCalculations.php",
+            data: {company: company, id: id},
+            success: function (data) {
 
-            });
+                var pay = $('#'+company);
+                var spinner = pay.find('.pay__spinner');
+                var calculated = pay.find('.pay__calculated');
+                var info = calculated.find('.pay__info span');
+
+                info.append("6999" + " ₽");
+                $(spinner).addClass('disable');
+                $(calculated).removeClass('disable');
+
+            }
         });
     }
 });
