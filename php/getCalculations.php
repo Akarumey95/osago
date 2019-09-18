@@ -1,16 +1,15 @@
 <?php
 
-$data = http_build_query([
-    "company_code" => $_POST['company'],
-    "contract_id" => $_POST['id'],
+//$data = http_build_query([
+//    "company_code" => $_POST['company'],
+//    "contract_id" => $_POST['id'],
+//
+//]);
 
-]);
-
-/*$data = http_build_query([
-    "company_code" => 'rgs',
+$data =[
+    "company_code" => 'avolga',
     "contract_id" => 5652,
-
-]);*/
+];
 
 $ch = curl_init();//init Curl
 curl_setopt_array($ch, [
@@ -27,6 +26,7 @@ $headers[] = 'Authorization: Token Test2019';
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 $result=curl_exec($ch);
+var_dump($result);
 $res = json_decode($result);
 $code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
 curl_close($ch);
