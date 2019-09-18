@@ -87,7 +87,6 @@ curl_close($ch);
                 <div class="block__row">
                     <div class="block__item">
                         <label>Марка</label>
-                        <!--<input type="text" value="">-->
                         <select name="vehicle_mark_name" id="autoMarks"> <!--class="selectpicker" data-live-search="true"-->
                             <option></option>
                             <?php foreach ($res['results'] as $item):?>
@@ -98,6 +97,10 @@ curl_close($ch);
                     <div class="block__item">
                         <label>Модель</label>
                         <select name="vehicle_model_name" id="autoModels"></select>
+                    </div>
+                    <div class="block__item">
+                        <label class="empty__label"></label>
+                        <input type="hidden" name="vehicle_category" id="autoCategory">
                     </div>
                 </div>
                 <div class="block__row">

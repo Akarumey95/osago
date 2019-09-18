@@ -34,10 +34,17 @@ $(document).ready(function () {
            //alert(data);
            data = $.parseJSON(data);
            $('#autoModels').find('option').remove();
+           $('#autoModels').append("<option></option>");
            $.each(data, function (index, item) {
-               $('#autoModels').append("<option value='" + item.name + "'>" + item.name + "</option>");
+               $('#autoModels').append("<option value='" + item.name + "' data-category='" + item.category + "'>" + item.name + "</option>");
            });
        });
+    });
+
+    $('#autoModels').change(function () {
+        var option = $(this)[0]['selectedOptions'][0];
+        var category = $(option).attr("data-category");
+        $('#autoCategory').val(category);
     });
 
     //Живой поиск
@@ -109,12 +116,14 @@ $(document).ready(function () {
             data: {company: company, id: id},
             success: function (data) {
 
+                alert(data);
+
                 var pay = $('#'+company);
                 var spinner = pay.find('.pay__spinner');
                 var calculated = pay.find('.pay__calculated');
                 var info = calculated.find('.pay__info span');
 
-                info.append("6999" + " ₽");
+                info.innerHTML = "6999" + " ₽" //append("6999" + " ₽");
                 $(spinner).addClass('disable');
                 $(calculated).removeClass('disable');
 
