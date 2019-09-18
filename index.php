@@ -166,12 +166,58 @@ curl_close($ch);
 			</div>
 			<div class="tab__block block-tab3 tab">
 				<div align="center" class="title">Данные владельца машины</div>
-                <div class="block__row">
+                <div class="block__row" style="flex-direction: column;">
                     <div class="block__item">
                         <label>Начните ввод, а мы подскажем</label>
-                        <input type="text" name="owner_full_address" id="owner_region" value="" class="who"  autocomplete="off">
+                        <input  type="text" style="width: 100%;"  name="owner_full_address" id="owner_region" value="" class="who"  autocomplete="off">
                         <ul class="search_result"></ul>
                     </div>
+                    <div id="address" style="    display: flex;
+
+    flex-wrap: wrap;
+    justify-content: space-between;">
+                        <div class="block__row">
+                            <div class="block__item">
+                                <label>Страна</label>
+                                <input class="field" id="country" disabled="true"/>
+                            </div>
+
+                            <div class="block__item">
+                                <label>Область</label>
+                                <input class="field" id="administrative_area_level_1" disabled="true"/>
+                            </div>
+
+                            <div class="block__item">
+                                <label>Город</label>
+                                <input class="field" id="locality" disabled="true"/>
+                            </div>
+
+                        </div>
+
+                        <div class="block__row">
+                            <div class="block__item" style="margin: 0 !important;">
+                                <label>Дом</label>
+                                <input class="field" id="street_number" disabled="true"/>
+                            </div>
+
+                            <div class="block__item">
+                                <label>Улица</label>
+                                <input class="field" id="route" disabled="true"/>
+                            </div>
+
+                            <div class="block__item">
+                                <label>Индекс</label>
+                                <input class="field" id="postal_code" disabled="true"/>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <hr style="margin: 50px 0;">
+
+
                 </div>
                 <div class="block__row">
                     <div class="block__item">
@@ -512,6 +558,81 @@ curl_close($ch);
 		</div>
     </main><!-- .content -->
 </div><!-- .wrapper -->
+
+<script>
+    // This sample uses the Autocomplete widget to help the user select a
+    // place, then it retrieves the address components associated with that
+    // place, and then it populates the form fields with those details.
+    // This sample requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script
+    // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    var placeSearch, autocomplete;
+
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search predictions to
+        // geographical location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('owner_region'), {types: ['geocode']});
+
+        // Avoid paying for data that you don't need by restricting the set of
+        // place fields that are returned to just the address components.
+        autocomplete.setFields(['address_component']);
+
+        // When the user selects an address from the drop-down, populate the
+        // address fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details,
+        // and then fill-in the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle(
+                    {center: geolocation, radius: position.coords.accuracy});
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIrId_5K3xS1-uW7IykNIhm-3euwLISzw&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js" defer></script>
 </body>

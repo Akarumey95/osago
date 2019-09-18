@@ -9,7 +9,6 @@
 $data = [
     "company_code" => $_POST['company'],
     "contract_id" => $_POST['id'],
-
 ];
 
 $ch = curl_init();//init Curl
@@ -27,6 +26,7 @@ $headers[] = 'Authorization: Token Test2019';
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 $result=curl_exec($ch);
+var_dump($result);
 $res = json_decode($result);
 $code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
 var_dump(curl_error($ch));
