@@ -170,7 +170,7 @@ body {
     color: #072071;
 }
 
-/* --- Настройка табок и блоков --- */
+/* --- Настройка табов и блоков --- */
 .tabs {
     padding: 100px 0 0 0;
 }
@@ -210,7 +210,7 @@ body {
 }
 .tabs .title {
     display: block;
-    padding: 0 0 50px 0;
+    margin: 30px 0 50px 0;
     font-family: Gilroy-Bold;
     font-size: 42px;
 }
@@ -223,12 +223,16 @@ body {
 .empty__label{
     height: 18px;
 }
+label.error {
+    color: red;
+    margin-top: 5px!important;
+}
 .tabs .tab input,
 .tabs .tab select {
     display: inline-block;
     box-sizing: content-box;
     height: 48px;
-    width: 340px;
+    width: 335px;
     padding: 0 0 0 30px;
     border: 1px solid #b1b1b1;
     font-size: 18px;
@@ -238,12 +242,13 @@ body {
     width: 145px;
 }
 .tabs .tab input.half__input{
-    width: 140px;
+    width: 150px;
 }
 .tabs .block__row {
     display: flex;
     width: 100%;
     justify-content: flex-start;
+    padding-left: 5px;
 }
 .block__row--end{
     justify-content: flex-end!important;
@@ -267,7 +272,17 @@ body {
     color: #000;
     cursor: pointer;
 }
-
+.drivers__item{
+    position: relative;
+}
+.drivers__item .remove__btn{
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
 .btn__action a{
     display: block;
     width: 566px;
@@ -288,21 +303,6 @@ body {
     height: 21px;
     margin: 12px 15px 0 0;
     background: url("../img/pepol.png") no-repeat;
-}
-
-.block__row .nob{
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 0;
-}
-.block__row .nob label{
-    margin: 0;
-}
-.block__row .nob input{
-    width: 15px;
-    height: 15px;
-    margin-left: 10px;
 }
 .after {
     position: absolute;
@@ -344,11 +344,18 @@ body {
     justify-content: space-between;
 }
 .tabs .tab__block .pay .pay__brand {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
     width: 20%;
     height: 100%;
     margin-left: 50px;
 }
-#alpha .pay__brand{
+.tabs .tab__block .pay .pay__brand img{
+    width: 100%;
+}
+
+/*#alpha .pay__brand{
     background: url(../img/alpha.png) no-repeat center;
     background-size: cover;
 }
@@ -382,7 +389,7 @@ body {
 #service_reserve .pay__brand{
     background: url(../img/svrez.png) no-repeat center;
     background-size: cover;
-}
+}*/
 .tabs .tab__block .pay .pay__spinner{
     display: flex;
     align-items: center;
@@ -391,6 +398,13 @@ body {
 .tabs .tab__block .pay .pay__spinner svg{
     width: 100px;
     height: 100px;
+}
+.tabs .tab__block .pay .pay__error{
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+    font-size: 18px;
+    color: #b70021;
 }
 .tabs .tab__block .pay .pay__calculated{
     margin-right: 50px;
@@ -427,6 +441,7 @@ body {
 }
 .tabs .tab__block .pay.disable,
 .tabs .tab__block .pay .pay__calculated.disable,
+.tabs .tab__block .pay .pay__error.disable,
 .tabs .tab__block .pay .pay__spinner.disable{
     display: none;
 }

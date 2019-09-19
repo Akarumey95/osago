@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    var is_submit = false;
     var companies = [];
 
     $.ajax({
@@ -25,14 +26,14 @@ $(document).ready(function () {
     });*/
 
     $('#autoMarks').change(function () {
-       var id = $(this).val();
+        var option = $(this)[0]['selectedOptions'][0];
+        var id = $(option).attr("data-id");
        $.ajax({
            type: "POST",
            url: "php/getData.php",
            data: {id: id, action: "getModels"},
+           dataType: "json",
        }).done(function (data) {
-           //alert(data);
-           data = $.parseJSON(data);
            $('#autoModels').find('option').remove();
            $('#autoModels').append("<option></option>");
            $.each(data, function (index, item) {
@@ -47,50 +48,11 @@ $(document).ready(function () {
         $('#autoCategory').val(category);
     });
 
-    //Живой поиск
-    $('.who').bind("change keyup input click", function() {
-        var text = $(this).val();
-        if(text.length >= 2){
-            $.ajax({
-                type: 'post',
-                url: "php/search.php", //Путь к обработчику
-                data: {action: 'search', pattern:text},
-                response: 'text',
-                success: function(data){
-                    data = $.parseJSON(data);
-                    $('.search_result').find('li').remove();
-                    $.each(data, function (index, item) {
-                        $(".search_result").fadeIn();
-                        if(item.cities != null){
-                            $.each(item.cities, function (index2, item2) {
-                                $(".search_result").append("<li>" + item.region_name + ", "+ item2 + "</li>");
-                            });
-                        }else{
-                            $(".search_result").append("<li>" + item.region_name + "</li>");
-                        }
-                    });
-
-                }
-            })
-        }else{
-            $('.search_result').find('li').remove();
-        }
-    })
-
-    $(".search_result").hover(function(){
-        $(".who").blur(); //Убираем фокус с input
-    })
-
-    //При выборе результата поиска, прячем список и заносим выбранный результат в input
-    $(".search_result").on("click", "li", function(){
-        var region = $(this).text();
-        $('#owner_region').val(region);
-        //$(".who").val(s_user).attr('disabled', 'disabled'); //деактивируем input, если нужно
-        $(".search_result").fadeOut();
-    });
-
     //Просчет полисов
     $('.submit__trigger').on('click', function () {
+        if(is_submit == false){
+            return;
+        }
         var form = $('#calculate__form')[0];
         var Fdata = new FormData(form);
         $.ajax({
@@ -101,33 +63,173 @@ $(document).ready(function () {
             contentType: false,
             dataType: "json",
             success: function (data) {
-                $(".pay").removeClass('disable');
                 $.each(companies, function (index, item) {
-                    getCalculations(item.code, data.contract_id)
+                    getCalculations(item.code, data.contract_id);
                 });
             }
         });
     });
-
     function getCalculations(company, id) {
+        $('#'+company).removeClass('disable');
         $.ajax({
             type: "POST",
             url: "php/getCalculations.php",
             data: {company: company, id: id},
+            dataType: "json",
             success: function (data) {
+                if(company !== "arsenal"){
+                    var pay = $('#'+company);
+                    var spinner = pay.find('.pay__spinner');
+                    var error = pay.find('.pay__error');
+                    var error_info = error.find('span');
+                    var calculated = pay.find('.pay__calculated');
+                    var info = calculated.find('.pay__info span');
+                    var btn = calculated.find('.pay__btn a');
+                    error_info.empty();
+                    info.empty();
 
-                alert(data);
+                    if(data.errors){
+                        error_info.append(data.errors.detail);
+                        $(error).removeClass('disable');
+                        $(spinner).addClass('disable');
+                    }else {
+                        getResult(company, data.id);
+                    }
 
-                var pay = $('#'+company);
-                var spinner = pay.find('.pay__spinner');
-                var calculated = pay.find('.pay__calculated');
-                var info = calculated.find('.pay__info span');
 
-                info.innerHTML = "6999" + " ₽" //append("6999" + " ₽");
-                $(spinner).addClass('disable');
-                $(calculated).removeClass('disable');
+                    /*if(data.errors){
+                        error_info.append(data.errors.detail);
+                        $(error).removeClass('disable');
+                        $(spinner).addClass('disable');
+                    }else if(data.status == "PROCESSING"){
+                        getResult(company, data.id);
+                    }else{
+                        info.append(data.data.price + " ₽");
+                        btn.attr('href', data.data.payment_url);
+                        $(calculated).removeClass('disable');
+                        $(spinner).addClass('disable');
+                    }*/
 
+                    //alert(data);
+                }
             }
         });
     }
+    function getResult(company, id) {
+        $.ajax({
+            type: "POST",
+            url: "php/getResult.php",
+            data: {id: id},
+            dataType: "json",
+        }).done(function(data) {
+            var pay = $('#'+company);
+            var spinner = pay.find('.pay__spinner');
+            var error = pay.find('.pay__error');
+            var error_info = error.find('span');
+            var calculated = pay.find('.pay__calculated');
+            var info = calculated.find('.pay__info span');
+            var btn = calculated.find('.pay__btn a');
+            error_info.empty();
+            info.empty();
+
+           if(data.status == "PROCESSING"){
+                getResult(company, id);
+            }else if(data.status == "DECLINED"){
+               error_info.append("Оказано");
+               $(error).removeClass('disable');
+               $(spinner).addClass('disable');
+           }else{
+                info.append(data.data.price + " ₽");
+                btn.attr('href', data.data.payment_url);
+                $(calculated).removeClass('disable');
+                $(spinner).addClass('disable');
+            }
+        });
+    }
+
+    $(".btn__to__block2").on('click', function (e) {
+        var Block_1 = [
+            $("[name='vehicle_mark_name']"),
+            $("[name='vehicle_model_name']"),
+            $("[name='vehicle_power']"),
+            $("[name='vehicle_manufacture_year']"),
+            $("[name='vehicle_id_number']"),
+            $("[name='vehicle_serial']"),
+            $("[name='vehicle_number']"),
+            $("[name='vehicle_issue_date']"),
+            $("[name='diagnostic_card_number']"),
+            $("[name='diagnostic_card_expiration_date']"),
+        ];
+
+        $.each( Block_1, function (index, item) {
+            if (item.is(':invalid')) {
+                e.preventDefault();
+                item.css("border", "1px solid red");
+                setTimeout(function () {
+                    item.css("border", "1px solid #b1b1b1");
+                }, 1000)
+                //alert("Поле " + item[0].previousElementSibling.innerHTML + " не заполнено");
+            }
+        });
+    });
+
+    $(".btn__to__block3").on('click', function (e) {
+
+        var Block_2 = [
+            $("[name='action_start_date']"),
+            $("[name='insurance_period']"),
+        ];
+
+        $.each( Block_2, function (index, item) {
+            if (item.is(':invalid')) {
+                e.preventDefault();
+                item.css("border", "1px solid red");
+                setTimeout(function () {
+                    item.css("border", "1px solid #b1b1b1");
+                }, 1000)
+            }
+        });
+    });
+
+    $(".btn__to__block4").on('click', function (e) {
+
+        var Block_3 = [
+            $("[name='owner_full_address']"),
+            $("[name='owner_area']"),
+            $("[name='owner_city']"),
+            $("[name='owner_house']"),
+            $("[name='owner_street']"),
+            $("[name='owner_postal_code']"),
+            $("[name='owner_first_name']"),
+            $("[name='owner_last_name']"),
+            $("[name='owner_middle_name']"),
+            $("[name='owner_birth_date']"),
+            $("[name='owner_phone']"),
+            $("[name='owner_email']"),
+            $("[name='owner_serial']"),
+            $("[name='owner_number']"),
+            $("[name='owner_issue_date']"),
+            $("[name='owner_issued_by']"),
+            $("[name='drivers_first_name']"),
+            $("[name='drivers_last_name']"),
+            $("[name='drivers_middle_name']"),
+            $("[name='drivers_birth_date']"),
+            $("[name='drivers_experience_start_date']"),
+            $("[name='drivers_serial']"),
+            $("[name='drivers_number']"),
+            $("[name='drivers_issue_date']"),
+        ];
+
+        $.each( Block_3, function (index, item) {
+            if (item.is(':invalid')) {
+                e.preventDefault();
+                item.css("border", "1px solid red");
+                setTimeout(function () {
+                    item.css("border", "1px solid #b1b1b1");
+                }, 1000)
+            }
+        });
+
+    });
+
 });

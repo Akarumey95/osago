@@ -41,6 +41,24 @@ $agent = [
     "email" => "string@asdfs.com",
 ];
 
+$drivers = [];
+    for ($i=1; $i <= $_POST['drivers__count']; $i++){
+        $driver = [
+            "last_name"  => $_POST['drivers_'.$i.'_last_name'],
+            "first_name" => $_POST['drivers_'.$i.'_first_name'],
+            "middle_name"=> $_POST['drivers_'.$i.'_middle_name'],
+            "birth_date" => $_POST['drivers_'.$i.'_birth_date'],
+            "experience_start_date" => $_POST['drivers_'.$i.'_experience_start_date'],
+            "license" => [
+                "type_code" => "RUSSIAN_DRIVER_LICENSE",
+                "serial" =>  $_POST['drivers_'.$i.'_serial'],
+                "number" =>  $_POST['drivers_'.$i.'_number'],
+                "issue_date" => $_POST['drivers_'.$i.'_issue_date'],
+            ]
+        ];
+        $drivers[]=$driver;
+    }
+
 $data = [
     "insurer" => $insurer,
     "owner" => [
@@ -51,19 +69,12 @@ $data = [
             "birth_date" => $_POST['owner_birth_date'],
         ],
         "address" => [
-            "full_address" => "Московская область, Воскресенск, ул. Конная, 22",
-            "region" => "Московская область",
-            "area" => "Воскресенский Район",
-            "city" => "Воскресенск",
-            "settlement" => "",
-            "street" => "Конная",
-            "house" => 22,
-            "flat" => 10,
-            "postal_code" => "	140200",
-            "region_kladr" => "5000400000000",
-            "city_kladr" => "5000400100000",
-            "street_kladr" => "50004001000021200",
-            "okato" => "46206501000",
+            "full_address" => $_POST['owner_full_address'],
+            "area" => $_POST['owner_area'],
+            "city" => $_POST['owner_city'],
+            "street" => $_POST['owner_street'],
+            "house" => $_POST['owner_house'],
+            "postal_code" => $_POST['owner_postal_code'],
         ],
         "document" => [
             "type_code" => "RUSSIAN_PASSPORT",
@@ -101,21 +112,7 @@ $data = [
             "expiration_date" => $_POST['diagnostic_card_expiration_date'],
         ],
     ],
-    "drivers" => [
-       [
-           "last_name"  => $_POST['drivers_last_name'],
-           "first_name" => $_POST['drivers_first_name'],
-           "middle_name"=> $_POST['drivers_middle_name'],
-           "birth_date" => $_POST['drivers_birth_date'],
-           "experience_start_date" => $_POST['drivers_experience_start_date'],
-           "license" => [
-               "type_code" => "RUSSIAN_DRIVER_LICENSE",
-               "serial" =>  $_POST['drivers_serial'],
-               "number" =>  $_POST['drivers_number'],
-               "issue_date" => $_POST['drivers_issue_date'],
-           ],
-       ],
-    ],
+    "drivers" => $drivers,
     "policy_action" => [
         "action_start_date" => $_POST['action_start_date'],
         "insurance_period" =>  $_POST['insurance_period'],
@@ -144,4 +141,3 @@ curl_close($ch);
 
 if (curl_errno($ch)) { echo 'Error:' . curl_error($ch);}
 echo $res;
-?>
