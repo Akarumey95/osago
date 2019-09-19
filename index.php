@@ -22,24 +22,14 @@ require_once "views/head.php";
 
 		<div class="tabs">
 			<form action method="post" enctype="multipart/form-data" id="calculate__form">
-                <!--<input class="tab__checker" id="tab1" name="tab" type="radio" checked>
+                <input class="tab__checker" id="tab1" name="tab" type="radio" checked>
                     <label class="tab__label tab1" for="tab1">Автомобиль</label>
                 <input class="tab__checker btn__to__block2" id="tab2" name="tab" type="radio">
                     <label class="tab__label tab2" for="tab2">Условия</label>
                 <input class="tab__checker btn__to__block3" id="tab3" name="tab" type="radio">
                     <label class="tab__label tab3" for="tab3">Водители</label>
                 <input class="tab__checker btn__to__block4" id="tab4" name="tab" type="radio">
-                    <label class="tab__label tab4" for="tab4">Расчет</label>-->
-
-                <input class="tab__checker" id="tab1" name="tab" type="radio" checked>
-                <label class="tab__label tab1" for="tab1">Автомобиль</label>
-                <input class="tab__checker" id="tab2" name="tab" type="radio">
-                <label class="tab__label tab2" for="tab2">Условия</label>
-                <input class="tab__checker" id="tab3" name="tab" type="radio">
-                <label class="tab__label tab3" for="tab3">Водители</label>
-                <input class="tab__checker" id="tab4" name="tab" type="radio">
-                <label class="tab__label tab4" for="tab4">Расчет</label>
-
+                    <label class="tab__label tab4" for="tab4">Расчет</label>
 
                 <?php require_once "views/tab_1.php";?>
                 <?php require_once "views/tab_2.php";?>
