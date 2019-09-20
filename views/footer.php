@@ -80,6 +80,10 @@
     $(document).ready(function () {
         $("#calculate__form").validate({
             rules: {
+                'vehicle_power':{
+                    min: 0,
+                    step: 10,
+                },
                 'vehicle_manufacture_year':{
                     pattern : '[0-9]{4}',
                     minlength: 4,
@@ -169,6 +173,10 @@
 
             },
             messages : {
+                'vehicle_power':{
+                    min: 'Минимальное допустимое значение 0',
+                    step: 'Введите число кратное 10',
+                },
                 'vehicle_manufacture_year':{
                     pattern : 'Введите 4-х значное значение года ыпуска автомобиля',
                 },
