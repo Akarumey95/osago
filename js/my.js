@@ -49,10 +49,7 @@ $(document).ready(function () {
     });
 
     //Просчет полисов
-    $('.submit__trigger').on('click', function () {
-        if(is_submit == false){
-            return;
-        }
+    function submitForm(){
         var form = $('#calculate__form')[0];
         var Fdata = new FormData(form);
         $.ajax({
@@ -68,7 +65,7 @@ $(document).ready(function () {
                 });
             }
         });
-    });
+    }
     function getCalculations(company, id) {
         $('#'+company).removeClass('disable');
         $.ajax({
@@ -210,14 +207,14 @@ $(document).ready(function () {
             $("[name='owner_number']"),
             $("[name='owner_issue_date']"),
             $("[name='owner_issued_by']"),
-            $("[name='drivers_first_name']"),
-            $("[name='drivers_last_name']"),
-            $("[name='drivers_middle_name']"),
-            $("[name='drivers_birth_date']"),
-            $("[name='drivers_experience_start_date']"),
-            $("[name='drivers_serial']"),
-            $("[name='drivers_number']"),
-            $("[name='drivers_issue_date']"),
+            $("[name='drivers_1_first_name']"),
+            $("[name='drivers_1_last_name']"),
+            $("[name='drivers_1_middle_name']"),
+            $("[name='drivers_1_birth_date']"),
+            $("[name='drivers_1_experience_start_date']"),
+            $("[name='drivers_1_serial']"),
+            $("[name='drivers_1_number']"),
+            $("[name='drivers_1_issue_date']"),
         ];
 
         $.each( Block_3, function (index, item) {
@@ -227,6 +224,8 @@ $(document).ready(function () {
                 setTimeout(function () {
                     item.css("border", "1px solid #b1b1b1");
                 }, 1000)
+            }else{
+                submitForm();
             }
         });
 

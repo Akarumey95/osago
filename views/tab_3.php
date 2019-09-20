@@ -2,7 +2,7 @@
     <div align="center" class="title">Данные владельца машины</div>
     <div class="block__row" style="flex-direction: column;">
         <div class="block__item">
-            <label>Начните ввод, а мы подскажем</label>
+            <label>Начните ввод, а мы подскажем <span class="required__symbol">*</span></label>
             <input  type="text" style="width: 97%;"  name="owner_full_address" id="owner_region" value="" autocomplete="off" required>
         </div>
         <div id="address" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
@@ -43,11 +43,11 @@
 
     <div class="block__row">
         <div class="block__item">
-            <label>Имя</label>
+            <label>Имя <span class="required__symbol">*</span></label>
             <input type="text" name="owner_first_name" value="" required>
         </div>
         <div class="block__item">
-            <label>Фамилия</label>
+            <label>Фамилия <span class="required__symbol">*</span></label>
             <input type="text" name="owner_last_name" value="" required>
         </div>
         <div class="block__item">
@@ -57,27 +57,27 @@
     </div>
     <div class="block__row">
         <div class="block__item">
-            <label>Дата рождения</label>
-            <input type="date" name="owner_birth_date" value="" required>
+            <label>Дата рождения <span class="required__symbol">*</span></label>
+            <input type="date" name="owner_birth_date" value="" required min="1950-01-01" max="<?=date('Y-m-d', strtotime('-16 years'));?>">
         </div>
         <div class="block__item">
-            <label>Телефон</label>
+            <label>Телефон <span class="required__symbol">*</span></label>
             <input type="number" name="owner_phone" value="" required minlength="10">
         </div>
         <div class="block__item">
-            <label>Email</label>
+            <label>Email <span class="required__symbol">*</span></label>
             <input type="email" name="owner_email" value="" required>
         </div>
     </div>
     <div class="block__row">
         <div class="block__item">
-            <label>Паспортные данные</label>
+            <label>Паспортные данные <span class="required__symbol">*</span></label>
             <input class="half__input" type="text" name="owner_serial" value="" placeholder="Серия" required minlength="4">
             <input class="half__input" type="number" name="owner_number" value="" placeholder="Номер" required>
         </div>
         <div class="block__item">
             <label class="empty__label"></label>
-            <input type="date" value="" name="owner_issue_date" placeholder="Дата выдачи" required>
+            <input type="date" value="" name="owner_issue_date" placeholder="Дата выдачи" required min="1950-01-01" max="<?=date('Y-m-d');?>">
         </div>
         <div class="block__item">
             <label class="empty__label"></label>
@@ -91,11 +91,11 @@
         <div class="drivers__item">
             <div class="block__row">
                 <div class="block__item">
-                    <label>Имя</label>
+                    <label>Имя <span class="required__symbol">*</span></label>
                     <input type="text" name="drivers_1_first_name" value="" required>
                 </div>
                 <div class="block__item">
-                    <label>Фамилия</label>
+                    <label>Фамилия <span class="required__symbol">*</span></label>
                     <input type="text" name="drivers_1_last_name" value="" required>
                 </div>
                 <div class="block__item">
@@ -105,18 +105,18 @@
             </div>
             <div class="block__row">
                 <div class="block__item">
-                    <label>Дата рождения</label>
-                    <input type="date" name="drivers_1_birth_date" value="" required>
+                    <label>Дата рождения <span class="required__symbol">*</span></label>
+                    <input type="date" name="drivers_1_birth_date" value="" required min="1950-01-01" max="<?=date('Y-m-d', strtotime('-16 years'));?>">
                 </div>
                 <div class="block__item">
-                    <label>Дата начала стажа</label>
-                    <input type="date" name="drivers_1_experience_start_date" value="" required>
+                    <label>Дата начала стажа <span class="required__symbol">*</span></label>
+                    <input type="date" name="drivers_1_experience_start_date" value="" required min="1950-01-01" max="<?=date('Y-m-d');?>">
                     <div class="after">?</div>
                 </div>
             </div>
             <div class="block__row">
                 <div class="block__item">
-                    <label>Водительское удостоверение</label>
+                    <label>Водительское удостоверение <span class="required__symbol">*</span></label>
                     <input type="text" name="drivers_1_serial" value="" placeholder="Серия" required>
                 </div>
                 <div class="block__item">
@@ -124,8 +124,8 @@
                     <input type="number" name="drivers_1_number" value="" placeholder="Номер" required>
                 </div>
                 <div class="block__item">
-                    <label>Дата выдачи</label>
-                    <input type="date" name="drivers_1_issue_date" placeholder="Дата выдачи" value="" required>
+                    <label>Дата выдачи <span class="required__symbol">*</span></label>
+                    <input type="date" name="drivers_1_issue_date" placeholder="Дата выдачи" value="" required min="1950-01-01" max="<?=date('Y-m-d');?>">
                 </div>
             </div>
         </div>

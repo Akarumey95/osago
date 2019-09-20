@@ -1,0 +1,136 @@
+Array
+(
+    [insurer] => Array
+        (
+            [personal_info] => Array
+                (
+                    [last_name] => Дедков
+                    [first_name] => Петр
+                    [middle_name] => Петрович
+                    [gender] => M
+                    [birth_date] => 1980-09-05
+                    [birth_place] => Москва
+                )
+
+            [address] => Array
+                (
+                    [full_address] => Московская область, Воскресенск, ул. Конная, 25
+                    [region] => Московская область
+                    [area] => Воскресенский Район
+                    [city] => Воскресенск
+                    [settlement] => 
+                    [street] => Конная
+                    [house] => 22
+                    [flat] => 10
+                    [postal_code] => 	140200
+                    [region_kladr] => 5000400000000
+                    [city_kladr] => 5000400100000
+                    [street_kladr] => 50004001000021200
+                    [okato] => 46206501000
+                )
+
+            [document] => Array
+                (
+                    [type_code] => RUSSIAN_PASSPORT
+                    [serial] => 3212
+                    [number] => 345632
+                    [issue_date] => 1994-09-05
+                    [issued_by] => string
+                )
+
+            [contacts] => Array
+                (
+                    [phone] => +79900667777
+                    [email] => string@asdfs.com
+                )
+
+        )
+
+    [owner] => Array
+        (
+            [personal_info] => Array
+                (
+                    [last_name] => 
+                    [first_name] => 
+                    [middle_name] => 
+                    [birth_date] => 
+                )
+
+            [address] => Array
+                (
+                    [full_address] => 
+                    [area] => 
+                    [city] => 
+                    [street] => 
+                    [house] => 
+                    [postal_code] => 
+                )
+
+            [document] => Array
+                (
+                    [type_code] => RUSSIAN_PASSPORT
+                    [serial] => 
+                    [number] => 
+                    [issue_date] => 
+                    [issued_by] => 
+                )
+
+            [contacts] => Array
+                (
+                    [phone] => 
+                    [email] => 
+                )
+
+        )
+
+    [vehicle] => Array
+        (
+            [document] => Array
+                (
+                    [type_code] => PTS
+                    [serial] => 
+                    [number] => 
+                    [issue_date] => 
+                )
+
+            [vehicle_id] => Array
+                (
+                    [type_code] => VIN
+                    [number] => 
+                )
+
+            [engine] => Array
+                (
+                    [power] => 
+                )
+
+            [mark_name] => 
+            [model_name] => 
+            [manufacture_year] => 
+            [purpose] => PERSONAL
+            [category] => 
+            [diagnostic_card] => Array
+                (
+                    [number] => 
+                    [expiration_date] => 
+                )
+
+        )
+
+    [drivers] => Array
+        (
+        )
+
+    [policy_action] => Array
+        (
+            [action_start_date] => 
+            [insurance_period] => 
+        )
+
+    [agent_contacts] => Array
+        (
+            [phone] => +79900667777
+            [email] => string@asdfs.com
+        )
+
+)

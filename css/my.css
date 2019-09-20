@@ -195,6 +195,10 @@ body {
 .tabs .tab__checker#tab4:checked ~ .block-tab4 {
     display: block;
 }
+.tabs .required__symbol{
+    color: red;
+    font-size: 22px;
+}
 .tabs .tab__label{
     display: inline-block;
     float: left;
@@ -226,6 +230,7 @@ body {
 label.error {
     color: red;
     margin-top: 5px!important;
+    font-size: 17px!important;
 }
 .tabs .tab input,
 .tabs .tab select {

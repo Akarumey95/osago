@@ -42,22 +42,22 @@ $agent = [
 ];
 
 $drivers = [];
-    for ($i=1; $i <= $_POST['drivers__count']; $i++){
-        $driver = [
-            "last_name"  => $_POST['drivers_'.$i.'_last_name'],
-            "first_name" => $_POST['drivers_'.$i.'_first_name'],
-            "middle_name"=> $_POST['drivers_'.$i.'_middle_name'],
-            "birth_date" => $_POST['drivers_'.$i.'_birth_date'],
-            "experience_start_date" => $_POST['drivers_'.$i.'_experience_start_date'],
-            "license" => [
-                "type_code" => "RUSSIAN_DRIVER_LICENSE",
-                "serial" =>  $_POST['drivers_'.$i.'_serial'],
-                "number" =>  $_POST['drivers_'.$i.'_number'],
-                "issue_date" => $_POST['drivers_'.$i.'_issue_date'],
-            ]
-        ];
-        $drivers[]=$driver;
-    }
+for ($i=1; $i <= $_POST['drivers__count']; $i++){
+    $driver = [
+        "last_name"  => $_POST['drivers_'.$i.'_last_name'],
+        "first_name" => $_POST['drivers_'.$i.'_first_name'],
+        "middle_name"=> $_POST['drivers_'.$i.'_middle_name'],
+        "birth_date" => $_POST['drivers_'.$i.'_birth_date'],
+        "experience_start_date" => $_POST['drivers_'.$i.'_experience_start_date'],
+        "license" => [
+            "type_code" => "RUSSIAN_DRIVER_LICENSE",
+            "serial" =>  $_POST['drivers_'.$i.'_serial'],
+            "number" =>  $_POST['drivers_'.$i.'_number'],
+            "issue_date" => $_POST['drivers_'.$i.'_issue_date'],
+        ]
+    ];
+    $drivers[]=$driver;
+}
 
 $data = [
     "insurer" => $insurer,
@@ -121,6 +121,8 @@ $data = [
 ];//build query
 
 //echo json_encode($data);
+
+file_put_contents("log.txt", print_r($data, true));
 
 $ch = curl_init();//init Curl
 curl_setopt_array($ch, [

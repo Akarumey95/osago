@@ -16,11 +16,11 @@ $(document).ready(function () {
             "<a class='remove__btn' onclick='removeDrivers($(this));'>X</a>" +
             "<div class='block__row'>" +
             "                <div class='block__item'>" +
-            "                    <label>Имя</label>" +
+            "                    <label>Имя <span class='required__symbol'>*</span></label>" +
             "                    <input type='text' name='drivers_" + count + "_first_name' value='' required>" +
             "                </div>" +
             "                <div class='block__item'>" +
-            "                    <label>Фамилия</label>" +
+            "                    <label>Фамилия <span class='required__symbol'>*</span></label>" +
             "                    <input type='text' name='drivers_" + count + "_last_name' value='' required>" +
             "                </div>" +
             "                <div class='block__item'>" +
@@ -30,18 +30,18 @@ $(document).ready(function () {
             "            </div>" +
             "            <div class='block__row'>" +
             "                <div class='block__item'>" +
-            "                    <label>Дата рождения</label>" +
-            "                    <input type='date' name='drivers_" + count + "_birth_date' value='' required>" +
+            "                    <label>Дата рождения <span class='required__symbol'>*</span></label>" +
+            "                    <input type='date' name='drivers_" + count + "_birth_date' value='' required min='1950-01-01' max='2050-01-01'>" +
             "                </div>" +
             "                <div class='block__item'>" +
-            "                    <label>Дата начала стажа</label>" +
-            "                    <input type='date' name='drivers_" + count + "_experience_start_date' value='' required>" +
+            "                    <label>Дата начала стажа <span class='required__symbol'>*</span></label>" +
+            "                    <input type='date' name='drivers_" + count + "_experience_start_date' value='' required min='1950-01-01' max='2050-01-01'>" +
             "                    <div class='after'>?</div>" +
             "                </div>" +
             "            </div>" +
             "            <div class='block__row'>" +
             "                <div class='block__item'>" +
-            "                    <label>Водительское удостоверение</label>" +
+            "                    <label>Водительское удостоверение <span class='required__symbol'>*</span></label>" +
             "                    <input type='text' name='drivers_" + count + "_serial' value='' placeholder='Серия' required>" +
             "                </div>" +
             "                <div class='block__item'>" +
@@ -49,8 +49,8 @@ $(document).ready(function () {
             "                    <input type=number name='drivers_" + count + "_number' value='' placeholder='Номер' required>" +
             "                </div>" +
             "                <div class='block__item'>" +
-            "                    <label>Дата выдачи</label>" +
-            "                    <input type='date' name='drivers_" + count + "_issue_date' placeholder='Дата выдачи' value='' required>" +
+            "                    <label>Дата выдачи <span class='required__symbol'>*</span></label>" +
+            "                    <input type='date' name='drivers_" + count + "_issue_date' placeholder='Дата выдачи' value='' required min='1950-01-01' max='2050-01-01'>" +
             "                </div>" +
             "            </div>"
         );
