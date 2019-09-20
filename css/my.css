@@ -233,7 +233,8 @@ label.error {
     font-size: 17px!important;
 }
 .tabs .tab input,
-.tabs .tab select {
+.tabs .tab select,
+.tabs .tab .dropdown-toggle {
     display: inline-block;
     box-sizing: content-box;
     height: 48px;
@@ -243,6 +244,10 @@ label.error {
     font-size: 18px;
     font-family: Gilroy-Medium;
 }
+.tabs .tab .bootstrap-select{
+    width: 100%!important;
+}
+
 .tabs .tab input.short__input{
     width: 145px;
 }

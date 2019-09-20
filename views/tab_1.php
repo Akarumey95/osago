@@ -3,7 +3,7 @@
     <div class="block__row"><!--Block ROW-->
         <div class="block__item">
             <label>Марка <span class="required__symbol">*</span></label>
-            <select name="vehicle_mark_name" id="autoMarks" required>
+            <select name="vehicle_mark_name selectpicker" id="autoMarks" data-live-search="true" required>
                 <option></option>
                 <?php foreach ($res['results'] as $item):?>
                     <option value="<?=$item['name']?>" data-id="<?=$item['id']?>"><?=$item['name']?></option>
@@ -12,7 +12,7 @@
         </div>
         <div class="block__item">
             <label>Модель <span class="required__symbol">*</span></label>
-            <select name="vehicle_model_name" id="autoModels" required></select>
+            <select name="vehicle_model_name selectpicker" id="autoModels" data-live-search="true" required></select>
         </div>
         <div class="block__item">
             <label class="empty__label"></label>

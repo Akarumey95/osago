@@ -7,7 +7,7 @@
         </div>
         <div class="block__item">
             <label>Выберите период <span class="required__symbol">*</span></label>
-            <input class="short__input" type="number" name="insurance_period" value="" required minlength="1" maxlength="2" min="1" max="12">
+            <input class="short__input" type="number" name="insurance_period" value="" required minlength="1" maxlength="2" min="3" max="12">
         </div>
         <div class="block__item">
             <label class="empty__label"></label>

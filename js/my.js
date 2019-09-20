@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    $("#autoMarks").selectpicker();
+    $("#autoModels").selectpicker();
+
     var is_submit = false;
     var companies = [];
 
@@ -39,6 +42,7 @@ $(document).ready(function () {
            $.each(data, function (index, item) {
                $('#autoModels').append("<option value='" + item.name + "' data-category='" + item.category + "'>" + item.name + "</option>");
            });
+           $('#autoModels').selectpicker('refresh');
        });
     });
 
