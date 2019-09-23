@@ -238,7 +238,7 @@ label.error {
     display: inline-block;
     box-sizing: content-box;
     height: 48px;
-    width: 335px;
+    width: 326px;
     padding: 0 0 0 30px;
     border: 1px solid #b1b1b1;
     font-size: 18px;
@@ -249,10 +249,10 @@ label.error {
 }
 
 .tabs .tab input.short__input{
-    width: 145px;
+    width: 135px;
 }
 .tabs .tab input.half__input{
-    width: 150px;
+    width: 145px;
 }
 .tabs .block__row {
     display: flex;
@@ -272,7 +272,7 @@ label.error {
 }
 .btn__label{
     display: block;
-    width: 566px;
+    width: 545px;
     height: 50px;
     line-height: 50px;
     background: #ffdf00;
@@ -295,7 +295,7 @@ label.error {
 }
 .btn__action a{
     display: block;
-    width: 566px;
+    width: 560px;
     height: 50px;
 /* margin: 28px 0 0 0; */
     line-height: 50px;
@@ -364,42 +364,6 @@ label.error {
 .tabs .tab__block .pay .pay__brand img{
     width: 100%;
 }
-
-/*#alpha .pay__brand{
-    background: url(../img/alpha.png) no-repeat center;
-    background-size: cover;
-}
-#rgs .pay__brand{
-    background: url(../img/rgs.png) no-repeat center;
-}
-#ingos .pay__brand{
-    background: url(../img/ingos.png) no-repeat center;
-    background-size: cover;
-}
-#osk .pay__brand{
-    background: url(../img/osk.png) no-repeat center;
-    background-size: cover;
-}
-#renins .pay__brand{
-    background: url(../img/renis.png) no-repeat center;
-    background-size: cover;
-}
-#avolga .pay__brand{
-    background: url(../img/avolga.png) no-repeat center;
-    background-size: cover;
-}
-#soglasie .pay__brand{
-    background: url(../img/soglasie.png) no-repeat center;
-    background-size: cover;
-}
-#tinkoff .pay__brand{
-    background: url(../img/tinkoff.png) no-repeat center;
-    background-size: cover;
-}
-#service_reserve .pay__brand{
-    background: url(../img/svrez.png) no-repeat center;
-    background-size: cover;
-}*/
 .tabs .tab__block .pay .pay__spinner{
     display: flex;
     align-items: center;

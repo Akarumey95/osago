@@ -3,7 +3,7 @@
     <div class="block__row"><!--Block ROW-->
         <div class="block__item">
             <label>Марка <span class="required__symbol">*</span></label>
-            <select name="vehicle_mark_name selectpicker" id="autoMarks" data-live-search="true" required>
+            <select name="vehicle_mark_name" class="selectpicker" id="autoMarks" data-live-search="true" required>
                 <option></option>
                 <?php foreach ($res['results'] as $item):?>
                     <option value="<?=$item['name']?>" data-id="<?=$item['id']?>"><?=$item['name']?></option>
@@ -12,7 +12,7 @@
         </div>
         <div class="block__item">
             <label>Модель <span class="required__symbol">*</span></label>
-            <select name="vehicle_model_name selectpicker" id="autoModels" data-live-search="true" required></select>
+            <select name="vehicle_model_name" class="selectpicker" id="autoModels" data-live-search="true" required></select>
         </div>
         <div class="block__item">
             <label class="empty__label"></label>
@@ -44,7 +44,7 @@
         </div>
         <div class="block__item">
             <label>Дата выдачи <span class="required__symbol">*</span></label>
-            <input type="date" name="vehicle_issue_date" placeholder="Дата выдачи" value="" required min="1950-01-01" max="<?=date("Y-m-d");?>">
+            <input type="text" class="datapiker__include include--to" name="vehicle_issue_date" placeholder="Дата выдачи" value="" required min="1950-01-01" max="<?=date("Y-m-d");?>">
         </div>
     </div><!--END Block ROW-->
     <div class="block__row"><!--Block ROW-->
@@ -54,7 +54,7 @@
         </div>
         <div class="block__item">
             <label>Срок действия до <span class="required__symbol">*</span></label>
-            <input type="date" name="diagnostic_card_expiration_date" placeholder="Дата" value=""
+            <input type="text" class="datapiker__include include--from" name="diagnostic_card_expiration_date" placeholder="Дата" value=""
                    required min="<?=date("Y-m-d")?>" max="<?=date('Y-m-d', strtotime('+5 years'));?>">
         </div>
     </div><!--END Block ROW-->

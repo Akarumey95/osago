@@ -1,5 +1,24 @@
 $(document).ready(function () {
 
+    $('.input__phone').mask('+7(000) 000-00-00');
+
+    $('.datapiker__include.include--from').datetimepicker({
+        timepicker:false,
+        format:'d-m-Y',
+        minDate: 0,
+    });
+
+    $('.datapiker__include.include--to').datetimepicker({
+        timepicker:false,
+        format:'d-m-Y',
+        maxDate: 0,
+    });
+
+    $('.datapiker__include').datetimepicker({
+        timepicker:false,
+        format:'d-m-Y',
+    });
+
     $("#autoMarks").selectpicker();
     $("#autoModels").selectpicker();
 
@@ -96,22 +115,6 @@ $(document).ready(function () {
                     }else {
                         getResult(company, data.id);
                     }
-
-
-                    /*if(data.errors){
-                        error_info.append(data.errors.detail);
-                        $(error).removeClass('disable');
-                        $(spinner).addClass('disable');
-                    }else if(data.status == "PROCESSING"){
-                        getResult(company, data.id);
-                    }else{
-                        info.append(data.data.price + " ₽");
-                        btn.attr('href', data.data.payment_url);
-                        $(calculated).removeClass('disable');
-                        $(spinner).addClass('disable');
-                    }*/
-
-                    //alert(data);
                 }
             }
         });
@@ -169,7 +172,6 @@ $(document).ready(function () {
                 setTimeout(function () {
                     item.css("border", "1px solid #b1b1b1");
                 }, 1000)
-                //alert("Поле " + item[0].previousElementSibling.innerHTML + " не заполнено");
             }
         });
     });

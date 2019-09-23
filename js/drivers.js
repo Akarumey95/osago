@@ -31,11 +31,11 @@ $(document).ready(function () {
             "            <div class='block__row'>" +
             "                <div class='block__item'>" +
             "                    <label>Дата рождения <span class='required__symbol'>*</span></label>" +
-            "                    <input type='date' name='drivers_" + count + "_birth_date' value='' required min='1950-01-01' max='2050-01-01'>" +
+            "                    <input type='text' class='datapiker__include include--to' name='drivers_" + count + "_birth_date' value='' required min='1950-01-01' max='2050-01-01'>" +
             "                </div>" +
             "                <div class='block__item'>" +
             "                    <label>Дата начала стажа <span class='required__symbol'>*</span></label>" +
-            "                    <input type='date' name='drivers_" + count + "_experience_start_date' value='' required min='1950-01-01' max='2050-01-01'>" +
+            "                    <input type='text' class='datapiker__include include--to' name='drivers_" + count + "_experience_start_date' value='' required min='1950-01-01' max='2050-01-01'>" +
             "                    <div class='after'>?</div>" +
             "                </div>" +
             "            </div>" +
@@ -50,13 +50,24 @@ $(document).ready(function () {
             "                </div>" +
             "                <div class='block__item'>" +
             "                    <label>Дата выдачи <span class='required__symbol'>*</span></label>" +
-            "                    <input type='date' name='drivers_" + count + "_issue_date' placeholder='Дата выдачи' value='' required min='1950-01-01' max='2050-01-01'>" +
+            "                    <input type='text' class='datapiker__include include--to' name='drivers_" + count + "_issue_date' placeholder='Дата выдачи' value='' required min='1950-01-01' max='2050-01-01'>" +
             "                </div>" +
             "            </div>"
         );
 
         drivers__container.append(new_driver);
         drivers__count.val(count);
+
+        $('.datapiker__include.include--to').datetimepicker({
+            timepicker:false,
+            format:'d-m-Y',
+            maxDate: 0,
+        });
+        $('.datapiker__include.include--from').datetimepicker({
+            timepicker:false,
+            format:'d-m-Y',
+            minDate: 0,
+        });
     });
 });
 

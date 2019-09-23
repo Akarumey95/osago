@@ -1,8 +1,9 @@
 <?php
 //Get all models by mark
-function getAllModelByID($id){
+function getAllModelByID($id, $limit){
     $data = http_build_query([
         'mark_id' => $id,
+        'limit' => $limit,
     ]);//build query
     $ch = curl_init();//init Curl
     curl_setopt_array($ch, [
@@ -65,7 +66,7 @@ function getAllCompanies(){
 if($_POST['action'] == getMarks){
 echo json_encode(getAllMarks(500));
 }elseif($_POST['action'] == getModels){
-echo json_encode(getAllModelByID($_POST['id']));
+echo json_encode(getAllModelByID($_POST['id'], 500));
 }elseif($_POST['action'] == getCompanies){
     echo json_encode(getAllCompanies());
 }
