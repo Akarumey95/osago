@@ -85,6 +85,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <!--Date-picker js-->
 <script src="/js/datetimepicker-master/build/jquery.datetimepicker.full.js"></script>
+<!--My js-->
+<script src="js/validation.js"></script>
 
 </body>
 </html>

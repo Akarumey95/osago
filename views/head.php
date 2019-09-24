@@ -21,6 +21,5 @@
     <!--My js-->
     <script src="js/my.js"></script>
     <script src="js/drivers.js"></script>
-    <script src="js/validation.js"></script>
 </head>
 <body>
